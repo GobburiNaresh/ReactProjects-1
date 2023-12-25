@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Product from './components/Product/Product';
+import View from './components/Views/productView';
 
 function App() {
+  const [currentProductId, setCurrentProductId] = useState('');
+
+  const handleProductSelect = (productId) => {
+    setCurrentProductId(productId);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Product onProductIdSubmit={handleProductSelect} />
+      <View productId={currentProductId} />
     </div>
   );
 }
